@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+        <import type="android.view.View" />
+        <variable
+            name="commentInteractionHandler"
+            type="com.bitlove.fetlife.logic.interactionhandler.CardViewInteractionHandler" />
+        <variable
+            name="commentData"
+            type="com.bitlove.fetlife.logic.dataholder.ReactionViewDataHolder" />
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/comments_container"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:onClick="@{(view) -> commentInteractionHandler.onOpenCard(true)}"
+        >
+
+        <TextView
+            android:id="@+id/comment_time"
+            android:visibility="@{commentData.time != null ? View.VISIBLE : View.INVISIBLE}"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:gravity="top|right"
+            android:padding="4dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+            android:textColor="@color/gray"
+            android:text="@{commentData.time}"
+            />
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/avatar_image"
+            android:visibility="@{commentData.avatar.avatarUrl != null ? View.VISIBLE : View.INVISIBLE}"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:padding="4dp"
+            android:scaleType="centerCrop"
+            app:srcFresco="@{commentData.avatar.avatarUrl}"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            />
+
+        <TextView
+            android:id="@+id/avatar_name"
+            android:layout_marginLeft="4dp"
+            android:layout_marginTop="4dp"
+            android:text="@{commentData.avatar.avatarName}"
+            android:textIsSelectable="true"
+            android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+            android:textColor="@color/lightSilver"
+            android:autoLink="web"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/avatar_image"
+            android:layout_toRightOf="@id/avatar_image"
+            android:layout_toLeftOf="@+id/comment_time"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            />
+
+        <!--app:textEntities='@{""}'-->
+        <!--app:mediaEntityHolder="@{@id/comment_body}"-->
+
+        <TextView
+            android:id="@+id/comment_body"
+            app:textInteractionHandler="@{null}"
+            app:formattedText="@{commentData.text}"
+            app:removeLineBreaks="@{false}"
+            app:truncateText="@{commentInteractionHandler.truncateComment &amp;&amp; commentInteractionHandler.commentCount == 1}"
+            app:truncatedLength="@{250}"
+            android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+            android:autoLink="web"
+            android:ellipsize="end"
+            android:textColor="@color/gray"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:layout_marginLeft="4dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/avatar_image"
+            android:layout_toLeftOf="@+id/comment_time"
+            android:layout_below="@id/avatar_name"
+            android:onClick="@{(view) -> commentInteractionHandler.onOpenCard(true)}"
+            />
+
+    </RelativeLayout>
+
+</layout>

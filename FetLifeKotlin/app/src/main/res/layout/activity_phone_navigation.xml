@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include layout="@layout/include_appbar" />
+
+        <FrameLayout
+            android:id="@+id/content_fragment_container"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/navigation_bottom_separator">
+        </FrameLayout>
+
+        <View
+            android:id="@+id/navigation_bottom_separator"
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:background="@color/raisinBlack"
+            app:layout_anchor="@id/navigation_bottom"
+            app:layout_anchorGravity="top"
+            />
+
+        <android.support.design.widget.BottomNavigationView
+            android:id="@+id/navigation_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/black"
+            app:itemIconTint="@drawable/selector_bottom_navigation"
+            app:itemTextColor="@drawable/selector_bottom_navigation"
+            android:layout_gravity="bottom"/>
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/button_floating"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:layout_gravity="bottom|right"
+            android:layout_above="@+id/navigation_bottom"
+            android:layout_marginBottom="72dp"
+            android:layout_marginRight="24dp"
+            app:srcCompat="@android:drawable/ic_menu_sort_by_size" />
+
+    </android.support.design.widget.CoordinatorLayout>
+
+    <android.support.design.widget.NavigationView
+        android:id="@+id/navigation_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/include_navigation_header"
+        app:menu="@menu/menu_navigation_side"/>
+
+</android.support.v4.widget.DrawerLayout>

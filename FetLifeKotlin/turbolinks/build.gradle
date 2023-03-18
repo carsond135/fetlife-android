@@ -1,0 +1,108 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.github.dcendents.android-maven'
+
+buildscript {
+    ext.supportLibVersion = '27.1.1'
+    ext.libVersionName = '1.0.7'
+
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.4.1'
+    }
+}
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion '27.0.3'
+
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 26
+
+        consumerProguardFiles 'proguard-consumer-rules.pro'
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    api fileTree(dir: 'libs', include: ['*.jar'])
+    api "com.android.support:appcompat-v7:$supportLibVersion"
+    api 'com.google.code.gson:gson:2.8.0'
+    api 'org.apache.commons:commons-lang3:3.4'
+
+    testImplementation 'org.assertj:assertj-core:1.7.0'
+    testImplementation 'org.robolectric:robolectric:3.1.2'
+    testImplementation 'org.mockito:mockito-core:1.10.19'
+    testImplementation 'junit:junit:4.12'
+}
+
+ext {
+    bintrayRepo = 'maven'
+    bintrayName = 'turbolinks-android'
+
+    publishedGroupId = 'com.basecamp'
+    artifact = 'turbolinks'
+
+    libraryName = 'Turbolinks Android'
+    libraryDescription = 'Turbolinks for Android'
+    libraryVersion = "$libVersionName"
+
+    siteUrl = 'https://github.com/basecamp/turbolinks-android'
+    gitUrl = 'https://github.com/basecamp/turbolinks-android.git'
+
+    developerId = 'basecamp'
+    developerName = 'Basecamp'
+    developerEmail = 'support@basecamp.com'
+}
+
+group = publishedGroupId
+version = libraryVersion
+
+install {
+    repositories.mavenInstaller {
+        pom {
+            project {
+                packaging 'aar'
+                groupId publishedGroupId
+                artifactId artifact
+
+                name libraryName
+                description libraryDescription
+
+                developers {
+                    developer {
+                        id developerId
+                        name developerName
+                        email developerEmail
+                    }
+                }
+            }
+        }
+    }
+}
+
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}
+
+task javadoc(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+artifacts {
+    archives javadocJar
+    archives sourcesJar
+}

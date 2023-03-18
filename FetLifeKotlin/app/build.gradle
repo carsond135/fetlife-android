@@ -1,0 +1,91 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'com.google.firebase.crashlytics'
+apply plugin: 'com.google.gms.google-services'
+
+android {
+    compileSdkVersion build_versions.target_sdk
+    buildToolsVersion build_versions.build_tools
+    defaultConfig {
+        applicationId "com.bitlove.fetlife"
+        multiDexEnabled true
+        minSdkVersion build_versions.min_sdk
+        targetSdkVersion build_versions.target_sdk
+        versionCode 1
+        versionName "3.0.0-alpha1"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        debug {
+            applicationIdSuffix ".alpha"
+            debuggable true
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    flavorDimensions "default"
+    productFlavors {
+        online {}
+        offline {
+            applicationIdSuffix ".offline"
+            versionNameSuffix "-offline"
+        }
+    }
+    dataBinding {
+        enabled = true
+    }
+}
+
+
+dependencies {
+    implementation 'com.google.firebase:firebase-crashlytics:17.2.1'
+    implementation 'com.google.firebase:firebase-analytics:17.5.0'
+    kapt deps.room.compiler
+    kapt deps.databinding.compiler
+
+    implementation deps.kotlin.stdlib
+    implementation deps.kotlin.reflect
+
+    implementation deps.constraint_layout
+    implementation deps.google_play
+    implementation deps.support.app_compat
+    implementation deps.support.recyclerview
+    implementation deps.support.cardview
+    implementation deps.support.design
+    implementation deps.support.v13
+    implementation deps.room.runtime
+    implementation deps.room.rxjava2
+    implementation deps.lifecycle.runtime
+    implementation deps.lifecycle.extensions
+    implementation deps.paging
+    implementation deps.retrofit.runtime
+    implementation deps.retrofit.gson
+    implementation deps.okhttp_logging_interceptor
+    implementation deps.glide
+    implementation deps.rxjava2
+    implementation deps.rx_android
+    implementation deps.anko
+    implementation deps.ktx
+    implementation deps.job_queue
+    implementation deps.iconics.core
+    implementation deps.iconics.views
+    implementation deps.fresco.core
+    implementation deps.fresco.pipeline
+    implementation deps.fresco.photoview
+    implementation deps.font.material_google
+    implementation deps.joda_time
+    implementation deps.stetho
+    implementation deps.prettytime
+
+
+    implementation project(':turbolinks')
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+}
+repositories {
+    mavenCentral()
+}

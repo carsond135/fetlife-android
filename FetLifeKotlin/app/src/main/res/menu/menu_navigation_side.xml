@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/navigation_notifications"
+        app:showAsAction="always"
+        app:ico_color="@color/silver"
+        app:ico_icon="gmd-add-alert"
+        app:ico_size="24dp"
+        android:title="@string/menu_item_notifications"/>
+
+    <item
+        android:id="@+id/navigation_logout"
+        app:showAsAction="always"
+        app:ico_color="@color/silver"
+        app:ico_icon="gmd-add-alert"
+        app:ico_size="24dp"
+        android:title="@string/menu_item_logout"/>
+
+    <item
+        android:id="@+id/navigation_reset"
+        app:showAsAction="always"
+        app:ico_color="@color/silver"
+        app:ico_icon="gmd-add-alert"
+        app:ico_size="24dp"
+        android:title="@string/menu_item_reset"/>
+</menu>
