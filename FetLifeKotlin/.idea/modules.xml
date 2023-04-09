@@ -2,9 +2,15 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/FetLifeKotlin.iml" filepath="$PROJECT_DIR$/FetLifeKotlin.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/turbolinks/turbolinks.iml" filepath="$PROJECT_DIR$/turbolinks/turbolinks.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/FetLifeKotlin.iml" filepath="$PROJECT_DIR$/.idea/modules/FetLifeKotlin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/FetLifeKotlin.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/FetLifeKotlin.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/FetLifeKotlin.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/FetLifeKotlin.app.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/FetLifeKotlin.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/FetLifeKotlin.app.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/FetLifeKotlin.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/FetLifeKotlin.app.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/turbolinks/FetLifeKotlin.turbolinks.iml" filepath="$PROJECT_DIR$/.idea/modules/turbolinks/FetLifeKotlin.turbolinks.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/turbolinks/FetLifeKotlin.turbolinks.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/turbolinks/FetLifeKotlin.turbolinks.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/turbolinks/FetLifeKotlin.turbolinks.main.iml" filepath="$PROJECT_DIR$/.idea/modules/turbolinks/FetLifeKotlin.turbolinks.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/turbolinks/FetLifeKotlin.turbolinks.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/turbolinks/FetLifeKotlin.turbolinks.unitTest.iml" />
     </modules>
   </component>
 </project>
